@@ -13,7 +13,7 @@ NC='\e[0m'
 echo""
 echo -e "${RED}[!] This Tool Must Run As ROOT [!]${NC}"
 echo ""
-echo -e "${CYAN}[>] Press ENTER to Install Hacktronian, CTRL+C to Abort.${NC}"
+echo -e "${CYAN}[>] Press ENTER to Install, CTRL+C to Abort.${NC}"
 read INPUT
 echo ""
 
@@ -41,7 +41,7 @@ echo "[✔] Installing ...";
 echo "";
 git clone https://github.com/ItzRazvyy/razvyytools.git "$INSTALL_DIR";
 echo "#!/bin/bash
-python $INSTALL_DIR/razvyytools.py" '${1+"$@"}' > hacktronian;
+python $INSTALL_DIR/razvyytools.py" '${1+"$@"}' > razvyytools;
 chmod +x razvyytools;
 sudo cp razvyytools /usr/bin/;
 rm razvyytools;
