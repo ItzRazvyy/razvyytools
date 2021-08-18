@@ -112,8 +112,8 @@ def grabshell(url):
 
 def zipFinder(url):
     try:
-        for dir in directories:
-            currentcode = urllib.urlopen(url + zipList).getcode()
+        for zipfind in zipFinder:
+            currentcode = urllib.urlopen(url + zipfind).getcode()
             if currentcode == 200 or currentcode == 403:
                 print "-------------------------"
                 print "  [ + ] Found ZIP:  " + str(url + zipList) + ""
@@ -123,8 +123,8 @@ def zipFinder(url):
 
 def panelFinder(url):
     try:
-        for dir in directories:
-            currentcode = urllib.urlopen(url + adminList).getcode()
+        for admlist in adminList:
+            currentcode = urllib.urlopen(url + admlist).getcode()
             if currentcode == 200 or currentcode == 403:
                 print "-------------------------"
                 print "  [ + ] Found Admin Panel:  "(url + adminList) + ""
@@ -134,11 +134,11 @@ def panelFinder(url):
 
 def uploadFinder(url):
     try:
-        for dir in directories:
+        for uploadlist in upList:
             currentcode = urllib.urlopen(url + upList).getcode()
             if currentcode == 200 or currentcode == 403:
                 print "-------------------------"
-                print "  [ + ] Found UPLOAD:  " + str(url + upList) + ""
+                print "  [ + ] Found UPLOAD:  " + str(url + uploadList) + ""
                 upload.append(url + upList)
     except:
         pass
