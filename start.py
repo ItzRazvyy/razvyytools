@@ -94,7 +94,7 @@ def grabuploadedlink(url):
             currentcode = urllib.urlopen(url + dir).getcode()
             if currentcode == 200 or currentcode == 403:
                 print "-------------------------"
-                print "  [ + ] Found Directory:  " + str(url + dir)
+                print "  [ + ] Found Directory:  " + str(url + dir) + ""
                 upload.append(url + dir)
     except:
         pass
@@ -106,7 +106,7 @@ def grabshell(url):
                 currentcode = urllib.urlopen(upl + shell).getcode()
                 if currentcode == 200:
                     print "-------------------------"
-                    print "  [ ! ] Found Shell:  " + str(upl + shell)
+                    print "  [ ! ] Found Shell:  " + str(url + dir) + ""
     except:
         pass
 
@@ -116,7 +116,7 @@ def zipFinder(url):
             currentcode = urllib.urlopen(url + zipList).getcode()
             if currentcode == 200 or currentcode == 403:
                 print "-------------------------"
-                print "  [ + ] Found ZIP:  " + str(url + zipList)
+                print "  [ + ] Found ZIP:  " + str(url + zipList) + ""
                 upload.append(url + zipList)
     except:
         pass
@@ -128,7 +128,7 @@ def panelFinder(url):
             currentcode = urllib.urlopen(url + adminList).getcode()
             if currentcode == 200 or currentcode == 403:
                 print "-------------------------"
-                print "  [ + ] Found Admin Panel:  " + str(url + adminList)
+                print "  [ + ] Found Admin Panel:  "(url + adminList) + ""
                 upload.append(url + adminList)
     except:
         pass
@@ -140,7 +140,7 @@ def uploadFinder(url):
             currentcode = urllib.urlopen(url + upList).getcode()
             if currentcode == 200 or currentcode == 403:
                 print "-------------------------"
-                print "  [ + ] Found UPLOAD:  " + str(url + upList)
+                print "  [ + ] Found UPLOAD:  " + str(url + upList) + ""
                 upload.append(url + upList)
     except:
         pass
