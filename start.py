@@ -58,6 +58,8 @@ SOFTWARE.""")
 
 os.system('clear')
 os.system('clear')
+upList = ['up.php', 'up1.php', 'up/up.php', 'site/up.php', 'vb/up.php', 'forum/up.php', 'blog/up.php', 'upload.php',
+                  'upload1.php', 'upload2.php', 'vb/upload.php', 'forum/upload.php', 'blog/upload.php', 'site/upload.php', 'download.php']
 zipList = ['backup.tar.gz', 'backup/backup.tar.gz', 'backup/backup.zip', 'vb/backup.zip', 'site/backup.zip', 'backup.zip', 'backup.rar', 'backup.sql', 'vb/vb.zip', 'vb.zip', 'vb.sql', 'vb.rar', 'vb1.zip', 'vb2.zip', 'vbb.zip', 'vb3.zip', 'upload.zip', 'up/upload.zip', 'joomla.zip', 'joomla.rar', 'joomla.sql', 'wordpress.zip', 'wp/wordpress.zip', 'blog/wordpress.zip', 'wordpress.rar']
 directories = ['/uploads/', '/upload/', '/files/', '/resume/', '/resumes/', '/documents/', '/docs/', '/pictures/', '/file/', '/Upload/', '/Uploads/', '/Resume/', '/Resume/', '/UsersFiles/', '/Usersiles/', '/usersFiles/', '/Users_Files/', '/UploadedFiles/',
                '/Uploaded_Files/', '/uploadedfiles/', '/uploadedFiles/', '/hpage/', '/admin/upload/', '/admin/uploads/', '/admin/resume/', '/admin/resumes/', '/admin/pictures/', '/pics/', '/photos/', '/Alumni_Photos/', '/alumni_photos/', '/AlumniPhotos/', '/users/']
@@ -90,7 +92,7 @@ def grabuploadedlink(url):
             currentcode = urllib.urlopen(url + dir).getcode()
             if currentcode == 200 or currentcode == 403:
                 print "-------------------------"
-                print "  [ + ] Found Directory :  " + str(url + dir) + " [ + ]"
+                print "  [ + ] Found Directory:  " + str(url + dir) + " [ + ]"
                 print "-------------------------"
                 upload.append(url + dir)
     except:
@@ -103,7 +105,7 @@ def grabshell(url):
                 currentcode = urllib.urlopen(upl + shell).getcode()
                 if currentcode == 200:
                     print "-------------------------"
-                    print "  [ ! ] Found Shell :  " + str(upl + shell) + " [ ! ]"
+                    print "  [ ! ] Found Shell:  " + str(upl + shell) + " [ ! ]"
                     print "-------------------------"
     except:
         pass
@@ -114,9 +116,21 @@ def zipFinder(url):
             currentcode = urllib.urlopen(url + zipList).getcode()
             if currentcode == 200 or currentcode == 403:
                 print "-------------------------"
-                print "  [ + ] Found ZIP :  " + str(url + zipList) + " [ + ]"
+                print "  [ + ] Found ZIP:  " + str(url + zipList) + " [ + ]"
                 print "-------------------------"
                 upload.append(url + zipList)
+    except:
+        pass
+
+def uploadFinder(url):
+    try:
+        for dir in directories:
+            currentcode = urllib.urlopen(url + upList).getcode()
+            if currentcode == 200 or currentcode == 403:
+                print "-------------------------"
+                print "  [ + ] Found UPLOAD:  " + str(url + upList) + " [ + ]"
+                print "-------------------------"
+                upload.append(url + upList)
     except:
         pass
 
@@ -127,7 +141,7 @@ def shelltarget():
     grabuploadedlink(line)
     grabshell(line)
     zipFinder(line)
-
+    uploadFinder(line)
 
 ############### CLEARSCR ###############
 def clearScr():
@@ -137,10 +151,9 @@ def clearScr():
         os.system('cls')
 
 #####################################
-
 if __name__ == "__main__":
     try:
         menu()
     except KeyboardInterrupt:
         print("Closing...\r"),
-        time.sleep(0.25)
+        time.sleep(1)
