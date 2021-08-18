@@ -73,21 +73,17 @@ def logo():
 
 ############### MENU ###############
 def menu():
-    print("   {1}--Shell Checker")
-    print("   {1}--Zip Files Finder")
+    print("   {1}--Directory Checker")
     choiceweb = raw_input("root@razvyy~# ")
     if choiceweb == "1":
         clearScr()
         shelltarget()
-    if choiceweb == "2":
-        clearScr()
-        ziptarget()
     elif choiceweb == "":
         menu()
     else:
         menu()
 
-############### SHELL CHECKER ###############
+############### DIRECTORIES CHECKER ###############
 def grabuploadedlink(url):
     try:
         for dir in directories:
@@ -112,14 +108,6 @@ def grabshell(url):
     except:
         pass
 
-def shelltarget():
-    print("Example: http://target.com")
-    line = raw_input("Target: ")
-    line = line.rstrip()
-    grabuploadedlink(line)
-    grabshell(line)
-
-############### SHELL CHECKER ###############
 def zipFinder(url):
     try:
         for dir in directories:
@@ -132,18 +120,17 @@ def zipFinder(url):
     except:
         pass
 
-def ziptarget():
+def shelltarget():
     print("Example: http://target.com")
     line = raw_input("Target: ")
     line = line.rstrip()
+    grabuploadedlink(line)
+    grabshell(line)
     zipFinder(line)
+
 
 ############### CLEARSCR ###############
 def clearScr():
-    """
-    Clear the screen in case of GNU/Linux or
-    windows
-    """
     if system() == 'Linux':
         os.system('clear')
     if system() == 'Windows':
