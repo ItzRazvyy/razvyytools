@@ -134,7 +134,7 @@ def paneltarget():
     line = line.rstrip()
     findPanels(line)
 
-    def findPanels(url):
+    def findPanels(line):
         """
         find panels from grabbed websites
         the attacker may do a lot of vulnerabilty
@@ -144,7 +144,7 @@ def paneltarget():
         adminList = ['admin/', 'site/admin', 'admin.php/', 'up/admin/', 'central/admin/', 'whm/admin/', 'whmcs/admin/', 'support/admin/', 'upload/admin/', 'video/admin/', 'shop/admin/', 'shoping/admin/', 'wp-admin/', 'wp/wp-admin/', 'blog/wp-admin/', 'admincp/', 'admincp.php/', 'vb/admincp/', 'forum/admincp/', 'up/admincp/', 'administrator/',
                      'administrator.php/', 'joomla/administrator/', 'jm/administrator/', 'site/administrator/', 'install/', 'vb/install/', 'dimcp/', 'clientes/', 'admin_cp/', 'login/', 'login.php', 'site/login', 'site/login.php', 'up/login/', 'up/login.php', 'cp.php', 'up/cp', 'cp', 'master', 'adm', 'member', 'control', 'webmaster', 'myadmin', 'admin_cp', 'admin_site']
         clearScr()
-        for site in self.sites:
+        for site in line:
             for admin in adminList:
                 try:
                     if urllib.urlopen(site + admin).getcode() == 200:
@@ -159,7 +159,7 @@ def getserverbannertarget():
     line = line.rstrip()
     getServerBanner(line)
 
-    def getServerBanner(url):
+    def getServerBanner(line):
         """
         simply gets the server banner
         the attacker may benefit from it
@@ -167,7 +167,7 @@ def getserverbannertarget():
         """
         clearScr()
         try:
-            s = 'http://' + self.serverip
+            s = 'http://' + line.serverip
             httpresponse = urllib.urlopen(s)
             print ' [*] Server header -> ', httpresponse.headers.getheader('server')
         except:
@@ -180,7 +180,7 @@ def ziptarget():
     line = line.rstrip()
     findZip(line)
 
-    def findZip(url):
+    def findZip(line):
         """
         find zip files from grabbed websites
         it may contain useful informations
@@ -189,7 +189,7 @@ def ziptarget():
                    'vb1.zip', 'vb2.zip', 'vbb.zip', 'vb3.zip', 'upload.zip', 'up/upload.zip', 'joomla.zip', 'joomla.rar', 'joomla.sql', 'wordpress.zip', 'wp/wordpress.zip', 'blog/wordpress.zip', 'wordpress.rar']
         clearScr()
         print "[~] Finding zip file"
-        for site in self.sites:
+        for site in line:
             for zip1 in zipList:
                 try:
                     if urllib.urlopen(site + zip1).getcode() == 200:
