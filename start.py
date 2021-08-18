@@ -73,22 +73,14 @@ def logo():
 ############### MENU ###############
 def menu():
     print("   {1}--Shell Checker")
-    print("   {2}--Control Panel Finder")
-    print("   {2}--Zip Files Finder")
-    print("   {3}--Get server Info")
+    print("   {1}--Zip Files Finder")
     choiceweb = raw_input("root@razvyy~# ")
     if choiceweb == "1":
         clearScr()
         shelltarget()
     if choiceweb == "2":
         clearScr()
-        findPanels()
-    if choiceweb == "3":
-        clearScr()
-        findZip()
-    if choiceweb == "4":
-        clearScr()
-        getServerBanner()
+        ziptarget()
     elif choiceweb == "":
         menu()
     else:
@@ -126,61 +118,28 @@ def shelltarget():
     grabuploadedlink(line)
     grabshell(line)
 
-############### PANEL CHECKER ###############
-
-    def findPanels(ip1):
-   ip1 = raw_input('1- IP : ')
-        """
-        find panels from grabbed websites
-        the attacker may do a lot of vulnerabilty
-        tests on the admin area
-        """
-        print "[~] Finding admin panels"
-        adminList = ['admin/', 'site/admin', 'admin.php/', 'up/admin/', 'central/admin/', 'whm/admin/', 'whmcs/admin/', 'support/admin/', 'upload/admin/', 'video/admin/', 'shop/admin/', 'shoping/admin/', 'wp-admin/', 'wp/wp-admin/', 'blog/wp-admin/', 'admincp/', 'admincp.php/', 'vb/admincp/', 'forum/admincp/', 'up/admincp/', 'administrator/',
-                     'administrator.php/', 'joomla/administrator/', 'jm/administrator/', 'site/administrator/', 'install/', 'vb/install/', 'dimcp/', 'clientes/', 'admin_cp/', 'login/', 'login.php', 'site/login', 'site/login.php', 'up/login/', 'up/login.php', 'cp.php', 'up/cp', 'cp', 'master', 'adm', 'member', 'control', 'webmaster', 'myadmin', 'admin_cp', 'admin_site']
-        clearScr()
-        for site in ips1:
-            for admin in adminList:
-                try:
-                    if urllib.urlopen(ips1 + admin).getcode() == 200:
-                        print " [*] Found admin panel -> ", site + admin
-                except IOError:
-                    pass
-
-############## GETSERVERBANNER ###############
-    def getServerBanner(ips):
-    ip2 = raw_input('1- IP : ')
-        """
-        simply gets the server banner
-        the attacker may benefit from it
-        like getting the server side software
-        """
-        clearScr()
-        try:
-            s = 'http://' + ip2.serverip
-            httpresponse = urllib.urlopen(s)
-            print ' [*] Server header -> ', httpresponse.headers.getheader('server')
-        except:
-            pass
-
-############### ZIP CHECKER ############
-    def findZip(ip3):
-    ip3 = raw_input('1- IP : ')
-        """
-        find zip files from grabbed websites
-        it may contain useful informations
-        """
-        zipList = ['backup.tar.gz', 'backup/backup.tar.gz', 'backup/backup.zip', 'vb/backup.zip', 'site/backup.zip', 'backup.zip', 'backup.rar', 'backup.sql', 'vb/vb.zip', 'vb.zip', 'vb.sql', 'vb.rar',
+############### SHELL CHECKER ###############
+def zipFinder(url):
+   zipList = ['backup.tar.gz', 'backup/backup.tar.gz', 'backup/backup.zip', 'vb/backup.zip', 'site/backup.zip', 'backup.zip', 'backup.rar', 'backup.sql', 'vb/vb.zip', 'vb.zip', 'vb.sql', 'vb.rar',
                    'vb1.zip', 'vb2.zip', 'vbb.zip', 'vb3.zip', 'upload.zip', 'up/upload.zip', 'joomla.zip', 'joomla.rar', 'joomla.sql', 'wordpress.zip', 'wp/wordpress.zip', 'blog/wordpress.zip', 'wordpress.rar']
         clearScr()
         print "[~] Finding zip file"
-        for site in ip3:
-            for zip1 in zipList:
-                try:
-                    if urllib.urlopen(site + zip1).getcode() == 200:
-                        print " [*] Found zip file -> ", site + zip1
-                except IOError:
-                    pass
+    try:
+        for dir in directories:
+            currentcode = urllib.urlopen(url + zipList).getcode()
+            if currentcode == 200 or currentcode == 403:
+                print "-------------------------"
+                print "  [ + ] Found ZIP :  " + str(url + zipList) + " [ + ]"
+                print "-------------------------"
+                upload.append(url + zipList)
+    except:
+        pass
+
+def ziptarget():
+    print("Example: http://target.com")
+    line = raw_input("Target: ")
+    line = line.rstrip()
+    zipFinder(line)
 
 ############### CLEARSCR ###############
 def clearScr():
