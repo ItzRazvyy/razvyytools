@@ -83,7 +83,7 @@ def menu():
         scanusers()
     if choiceweb == "3":
         clearScr()
-        namp()
+        nmap()
     elif choiceweb == "":
         menu()
     else:
