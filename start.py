@@ -125,7 +125,7 @@ def panelFinder(url):
     try:
         for admlist in adminList:
             currentcode = urllib.urlopen(url + admlist).getcode()
-            if currentcode == 200 or currentcode == 403:
+            if currentcode == 200:
                 print "-------------------------"
                 print "  [ + ] Found Admin Panel:  "(url + adminList) + ""
                 upload.append(url + adminList)
@@ -136,7 +136,7 @@ def uploadFinder(url):
     try:
         for uploadlist in upList:
             currentcode = urllib.urlopen(url + upList).getcode()
-            if currentcode == 200 or currentcode == 403:
+            if currentcode == 200:
                 print "-------------------------"
                 print "  [ + ] Found UPLOAD:  " + str(url + uploadList) + ""
                 upload.append(url + upList)
