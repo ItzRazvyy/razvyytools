@@ -73,10 +73,22 @@ def logo():
 ############### MENU ###############
 def menu():
     print("   {1}--Shell Checker")
+    print("   {2}--Control Panel Finder")
+    print("   {2}--Zip Files Finder")
+    print("   {3}--Get server Info")
     choiceweb = raw_input("root@razvyy~# ")
     if choiceweb == "1":
         clearScr()
         shelltarget()
+    if choiceweb == "2":
+        clearScr()
+        findPanels()
+    if choiceweb == "3":
+        clearScr()
+        findZip()
+    if choiceweb == "4":
+        clearScr()
+        getServerBanner()
     elif choiceweb == "":
         menu()
     else:
@@ -114,7 +126,76 @@ def shelltarget():
     grabuploadedlink(line)
     grabshell(line)
 
+############### PANEL CHECKER ###############
 
+    def findPanels(self):
+        """
+        find panels from grabbed websites
+        the attacker may do a lot of vulnerabilty
+        tests on the admin area
+        """
+        print "[~] Finding admin panels"
+        adminList = ['admin/', 'site/admin', 'admin.php/', 'up/admin/', 'central/admin/', 'whm/admin/', 'whmcs/admin/', 'support/admin/', 'upload/admin/', 'video/admin/', 'shop/admin/', 'shoping/admin/', 'wp-admin/', 'wp/wp-admin/', 'blog/wp-admin/', 'admincp/', 'admincp.php/', 'vb/admincp/', 'forum/admincp/', 'up/admincp/', 'administrator/',
+                     'administrator.php/', 'joomla/administrator/', 'jm/administrator/', 'site/administrator/', 'install/', 'vb/install/', 'dimcp/', 'clientes/', 'admin_cp/', 'login/', 'login.php', 'site/login', 'site/login.php', 'up/login/', 'up/login.php', 'cp.php', 'up/cp', 'cp', 'master', 'adm', 'member', 'control', 'webmaster', 'myadmin', 'admin_cp', 'admin_site']
+        clearScr()
+        for site in self.sites:
+            for admin in adminList:
+                try:
+                    if urllib.urlopen(site + admin).getcode() == 200:
+                        print " [*] Found admin panel -> ", site + admin
+                except IOError:
+                    pass
+
+############## GETSERVERBANNER ###############
+    def getServerBanner(self):
+        """
+        simply gets the server banner
+        the attacker may benefit from it
+        like getting the server side software
+        """
+        clearScr()
+        try:
+            s = 'http://' + self.serverip
+            httpresponse = urllib.urlopen(s)
+            print ' [*] Server header -> ', httpresponse.headers.getheader('server')
+        except:
+            pass
+
+############### ZIP CHECKER ###############
+    def findZip(self):
+        """
+        find zip files from grabbed websites
+        it may contain useful informations
+        """
+        zipList = ['backup.tar.gz', 'backup/backup.tar.gz', 'backup/backup.zip', 'vb/backup.zip', 'site/backup.zip', 'backup.zip', 'backup.rar', 'backup.sql', 'vb/vb.zip', 'vb.zip', 'vb.sql', 'vb.rar',
+                   'vb1.zip', 'vb2.zip', 'vbb.zip', 'vb3.zip', 'upload.zip', 'up/upload.zip', 'joomla.zip', 'joomla.rar', 'joomla.sql', 'wordpress.zip', 'wp/wordpress.zip', 'blog/wordpress.zip', 'wordpress.rar']
+        clearScr()
+        print "[~] Finding zip file"
+        for site in self.sites:
+            for zip1 in zipList:
+                try:
+                    if urllib.urlopen(site + zip1).getcode() == 200:
+                        print " [*] Found zip file -> ", site + zip1
+                except IOError:
+                    pass
+
+        """
+        find zip files from grabbed websites
+        it may contain useful informations
+        """
+        zipList = ['backup.tar.gz', 'backup/backup.tar.gz', 'backup/backup.zip', 'vb/backup.zip', 'site/backup.zip', 'backup.zip', 'backup.rar', 'backup.sql', 'vb/vb.zip', 'vb.zip', 'vb.sql', 'vb.rar',
+                   'vb1.zip', 'vb2.zip', 'vbb.zip', 'vb3.zip', 'upload.zip', 'up/upload.zip', 'joomla.zip', 'joomla.rar', 'joomla.sql', 'wordpress.zip', 'wp/wordpress.zip', 'blog/wordpress.zip', 'wordpress.rar']
+        clearScr()
+        print "[~] Finding zip file"
+        for site in self.sites:
+            for zip1 in zipList:
+                try:
+                    if urllib.urlopen(site + zip1).getcode() == 200:
+                        print " [*] Found zip file -> ", site + zip1
+                except IOError:
+                    pass
+
+############### CLEARSCR ###############
 def clearScr():
     """
     Clear the screen in case of GNU/Linux or
@@ -124,6 +205,7 @@ def clearScr():
         os.system('clear')
     if system() == 'Windows':
         os.system('cls')
+
 #####################################
 
 if __name__ == "__main__":
