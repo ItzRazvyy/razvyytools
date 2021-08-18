@@ -82,13 +82,13 @@ def menu():
         shelltarget()
     if choiceweb == "2":
         clearScr()
-        findPanels()
+        paneltarget()
     if choiceweb == "3":
         clearScr()
-        findZip()
+        zipiptarget()
     if choiceweb == "4":
         clearScr()
-        getServerBanner()
+        getserverbannertarget()
     elif choiceweb == "":
         menu()
     else:
@@ -128,7 +128,13 @@ def shelltarget():
 
 ############### PANEL CHECKER ###############
 
-    def findPanels(self):
+def paneltarget():
+    print("Example: http://target.com")
+    line = raw_input("Target: ")
+    line = line.rstrip()
+    findPanels(line)
+
+    def findPanels(url):
         """
         find panels from grabbed websites
         the attacker may do a lot of vulnerabilty
@@ -147,7 +153,13 @@ def shelltarget():
                     pass
 
 ############## GETSERVERBANNER ###############
-    def getServerBanner(self):
+def getserverbannertarget():
+    print("Example: http://target.com")
+    line = raw_input("Target: ")
+    line = line.rstrip()
+    getServerBanner(line)
+
+    def getServerBanner(url):
         """
         simply gets the server banner
         the attacker may benefit from it
@@ -162,7 +174,13 @@ def shelltarget():
             pass
 
 ############### ZIP CHECKER ###############
-    def findZip(self):
+def ziptarget():
+    print("Example: http://target.com")
+    line = raw_input("Target: ")
+    line = line.rstrip()
+    findZip(line)
+
+    def findZip(url):
         """
         find zip files from grabbed websites
         it may contain useful informations
@@ -212,5 +230,5 @@ if __name__ == "__main__":
     try:
         menu()
     except KeyboardInterrupt:
-        print("Finishing up...\r"),
+        print("Closing...\r"),
         time.sleep(0.25)
