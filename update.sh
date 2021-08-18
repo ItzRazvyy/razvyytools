@@ -8,7 +8,7 @@ sudo chmod +x /usr/share/doc
 
 clear
 
-sudo rm -rf /usr/share/doc/hacktronian/
+sudo rm -rf /usr/share/doc/razvyytools/
 
 clear
 
