@@ -148,7 +148,7 @@ def scanusers():
 
 def nmap():
     target = raw_input("Enter a target: ")
-    os.system("apt install nmap > /dev/null & yum install apt > /dev/null & pkg install nmap > /dev/null")
+    os.system("apt install nmap > > /dev/null 2>&1 & yum install apt > /dev/null 2>&1 & pkg install nmap > /dev/null 2>&1")
     os.system("nmap %s" % target)
 
 ############### CLEARSCR ###############
