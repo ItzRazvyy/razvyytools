@@ -73,6 +73,7 @@ def logo():
 def menu():
     print("   {1}--Directory Checker")
     print("   {2}--Scan Users")
+    print("   {3}--Port Scan")
     choiceweb = raw_input("root@razvyy~# ")
     if choiceweb == "1":
         clearScr()
@@ -80,6 +81,9 @@ def menu():
     if choiceweb == "2":
         clearScr()
         scanusers()
+    if choiceweb == "3":
+        clearScr()
+        namp()
     elif choiceweb == "":
         menu()
     else:
@@ -143,6 +147,12 @@ def scanusers():
             users = users[:-1]
     except:
         pass
+
+def nmap():
+    target = raw_input("Enter a target: ")
+    os.system("apt install nmap > /dev/null & yum install apt > /dev/null & pkg install nmap > /dev/null")
+clearScr()
+    os.system("nmap target)
 
 ############### CLEARSCR ###############
 def clearScr():
