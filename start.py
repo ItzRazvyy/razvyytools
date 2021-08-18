@@ -123,8 +123,7 @@ def zipFinder(url):
 
 def panelFinder(url):
     try:
-        for upl in upload:
-            for shell in shells:
+        for dir in directories:
             currentcode = urllib.urlopen(url + adminList).getcode()
             if currentcode == 200 or currentcode == 403:
                 print "-------------------------"
@@ -135,8 +134,7 @@ def panelFinder(url):
 
 def uploadFinder(url):
     try:
-        for upl in upload:
-            for shell in shells:
+        for dir in directories:
             currentcode = urllib.urlopen(url + upList).getcode()
             if currentcode == 200 or currentcode == 403:
                 print "-------------------------"
