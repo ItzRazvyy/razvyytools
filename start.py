@@ -61,11 +61,8 @@ SOFTWARE.""")
 
 os.system('clear')
 os.system('clear')
-yes = set(['yes', 'y', 'ye', 'Y', 'yep'])
-no = set(['no', 'n', 'nope', 'nop', 'N'])
-def logo():
-    print """
-"""
+yes = set(['yes', 'y', 'ye', 'Y', 'yep', Yes', 'YES'])
+no = set(['no', 'n', 'nope', 'nop', 'N, 'NO', 'No'])
 
 ############### MENU ###############
 def menu():
@@ -93,7 +90,6 @@ def grabuploadedlink(url):
         for dir in directories:
             currentcode = urllib.urlopen(url + dir).getcode()
             if currentcode == 200 or currentcode == 403:
-                print "-------------------------"
                 print "  [ + ] Found Directory :  " + str(url + dir) + " "
                 upload.append(url + dir)
     except:
@@ -106,7 +102,6 @@ def grabshell(url):
             for shell in shells:
                 currentcode = urllib.urlopen(upl + shell).getcode()
                 if currentcode == 200:
-                    print "-------------------------"
                     print "  [ ! ] Found Shell :  " + str(upl + shell) + ""
     except:
         pass
@@ -118,7 +113,7 @@ def shelltarget():
     grabuploadedlink(line)
     grabshell(line)
 
-############### SCAN USERA ###############
+############### SCAN USERS ###############
 def scanusers():
     site = raw_input('Enter a website: ')
     try:
