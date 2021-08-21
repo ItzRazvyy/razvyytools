@@ -48,7 +48,7 @@ def gscan(): #Global scan
                                 elif e.code == 404:
                                         print color['red'] + '-\033[1;m' + color['white'],
                                 elif e.code == 503:
-                                        print '\033[1;31mx\033[1;m' + coneccion_url, #Not Found
+                                        print color['red'] + '\n\Service Unavailable:\033[1;m ' + coneccion_url, #Not Found
                                 else:
                                         print '\n\033[1;32mREDIRECTION: \033[1;m' + coneccion_url, #Redirection
                                         redi.append(coneccion_url)                                   
