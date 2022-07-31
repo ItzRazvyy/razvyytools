@@ -13,14 +13,14 @@ class shellScanner():
         self.scan()
         
     def scan(self):
-        parser = argparse.ArgumentParser(prog="shell.py", description="Simple Find Shell in Website")
+        parser = argparse.ArgumentParser(prog="main.py", description="Simple Find Shell in Website")
         parser.add_argument("-u", dest="domain", help="Your url")
         parser.add_argument("-w", dest="wordlist", help="Your wordlist")
         args = parser.parse_args()
         if not args.domain:
-            sys.exit(f"Usage: shell.py -u example.com -w wordlist.txt")
+            sys.exit(f"Usage: main.py -u example.com -w wordlist.txt")
         if not args.wordlist:
-            sys.exit(f"Usage: shell.py -u example.com -w wordlist.txt")
+            sys.exit(f"Usage: main.py -u example.com -w wordlist.txt")
             
         # handle url website format
         site = args.domain
